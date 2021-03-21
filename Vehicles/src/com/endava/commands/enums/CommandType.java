@@ -1,0 +1,13 @@
+package com.endava.commands.enums;
+
+public enum CommandType {
+  CREATEAIRPLANE,
+  CREATECAR,
+  CREATESHIP,
+  CREATETRAIN,
+  CREATECOURSE,
+  CREATERENT,
+  LISTVEHICLES,
+  LISTCOURSES,
+  LISTRENTS;
+}
