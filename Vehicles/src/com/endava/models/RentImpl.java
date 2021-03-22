@@ -3,18 +3,19 @@ package com.endava.models;
 import com.endava.models.contracts.Course;
 import com.endava.models.contracts.Rent;
 import com.endava.models.helpers.ValidationHelper;
+import java.math.BigDecimal;
 
 public class RentImpl implements Rent {
-  private double additionalCosts;
+  private BigDecimal additionalCosts;
   private Course course;
 
   public RentImpl(Course course, Double additionalCosts) {
-    setAdditionalCosts(additionalCosts);
+    setAdditionalCosts(BigDecimal.valueOf(additionalCosts));
     setCourse(course);
   }
 
   @Override
-  public double getAdditionalCosts() {
+  public BigDecimal getAdditionalCosts() {
     return additionalCosts;
   }
 
@@ -24,11 +25,11 @@ public class RentImpl implements Rent {
   }
 
   @Override
-  public double calculatePrice() {
-    return getAdditionalCosts() + getCourse().calculateTransportCosts();
+  public BigDecimal calculatePrice() {
+    return getAdditionalCosts().add(getCourse().calculateTransportCosts());
   }
 
-  private void setAdditionalCosts(double additionalCosts) {
+  private void setAdditionalCosts(BigDecimal additionalCosts) {
     this.additionalCosts = additionalCosts;
   }
 
