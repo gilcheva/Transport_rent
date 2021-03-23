@@ -7,6 +7,7 @@ public class Constants {
   public static final String PARKING_CREATED_MESSAGE = "Parking of type %s with name %s was created.";
   public static final String PARKING_EXISTS_MESSAGE = "Parking with name %s already exists.";
   public static final String PARKING_NOT_EXIST_MESSAGE = "Parking with name %s does not exist.";
+  public static final String PARKING_NO_SPACES_MESSAGE = "No free spaces at parking %s.";
   public static final String PARKING_TICKET_CREATED_MESSAGE = "%s entered parking.";
   public static final String PARKING_TICKET_PRICE = "%s, sum to pay: %.2f.";
   public static final String PARKING_TICKET_EXISTS_MESSAGE = "Parking ticket for %s already exists.";

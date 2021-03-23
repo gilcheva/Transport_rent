@@ -12,7 +12,7 @@ import com.endava.commands.creation.CreateRentCommand;
 import com.endava.commands.creation.CreateShipCommand;
 import com.endava.commands.creation.CreateTrainCommand;
 import com.endava.commands.creation.CreateTrainParkingCommand;
-import com.endava.commands.creation.ExitParkingCommand;
+import com.endava.commands.changes.ExitParkingCommand;
 import com.endava.commands.enums.CommandType;
 import com.endava.commands.listing.ListCoursesCommand;
 import com.endava.commands.listing.ListParkingTicketsCommand;

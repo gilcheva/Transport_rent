@@ -14,4 +14,8 @@ public interface Parking {
   BigDecimal getHourlyRate();
 
   ParkingType getParkingType();
+
+  void addVehicleToParking();
+
+  void removeVehicleFromParking();
 }

@@ -64,6 +64,7 @@ public class ParkingTicketImpl implements ParkingTicket {
   public OffsetDateTime updateExitTime() {
     return setExitTime(OffsetDateTime.now());
   }
+
   @Override
   public BigDecimal calculatePrice() {
     BigDecimal minuteRate = getParking().getHourlyRate()

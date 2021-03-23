@@ -1,11 +1,10 @@
 package com.endava.commands.creation;
 
 import static com.endava.commands.Constants.INVALID_NUMBER_OF_ARGUMENTS;
-import static com.endava.commands.Constants.PARKING_EXISTS_MESSAGE;
+import static com.endava.commands.Constants.PARKING_NO_SPACES_MESSAGE;
 import static com.endava.commands.Constants.PARKING_NOT_EXIST_MESSAGE;
 import static com.endava.commands.Constants.PARKING_TICKET_CREATED_MESSAGE;
 import static com.endava.commands.Constants.PARKING_TICKET_EXISTS_MESSAGE;
-import static com.endava.commands.Constants.PARKING_TICKET_NOT_EXIST_MESSAGE;
 
 import com.endava.commands.contracts.Command;
 import com.endava.core.contracts.VehiclesFactory;
@@ -14,7 +13,6 @@ import com.endava.models.parkings.contracts.Parking;
 import com.endava.models.parkings.contracts.ParkingTicket;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
 
 public class CreateParkingTicketCommand implements Command {
 
@@ -40,6 +38,11 @@ public class CreateParkingTicketCommand implements Command {
         .findAny()
         .orElseThrow(() ->
             new NoSuchElementException(String.format(PARKING_NOT_EXIST_MESSAGE, vehicleNumber)));
+    if (parking.getFreeSpaces() -1 == 0) {
+      throw new IllegalArgumentException(PARKING_NO_SPACES_MESSAGE);
+    }
+    parking.addVehicleToParking();
+
 
     ParkingTicket parkingTicket = factory.createParkingTicket(vehicleNumber, parking);
     addParkingTicket(parkingTicket);

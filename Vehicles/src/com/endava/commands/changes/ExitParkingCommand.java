@@ -1,4 +1,4 @@
-package com.endava.commands.creation;
+package com.endava.commands.changes;
 
 import static com.endava.commands.Constants.INVALID_NUMBER_OF_ARGUMENTS;
 import static com.endava.commands.Constants.PARKING_TICKET_NOT_EXIST_MESSAGE;
@@ -6,6 +6,7 @@ import static com.endava.commands.Constants.PARKING_TICKET_NOT_EXIST_MESSAGE;
 import com.endava.commands.contracts.Command;
 import com.endava.core.contracts.VehiclesFactory;
 import com.endava.core.contracts.VehiclesRepository;
+import com.endava.models.parkings.contracts.Parking;
 import com.endava.models.parkings.contracts.ParkingTicket;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
@@ -37,6 +38,8 @@ public class ExitParkingCommand implements Command {
             new NoSuchElementException(
                 String.format(PARKING_TICKET_NOT_EXIST_MESSAGE, vehicleNumber)));
 
+    Parking parking = ticket.getParking();
+    parking.removeVehicleFromParking();
     OffsetDateTime exitTime = ticket.updateExitTime();
     BigDecimal price = ticket.calculatePrice();
 

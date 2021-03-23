@@ -5,7 +5,7 @@ import com.endava.models.parkings.enums.ParkingType;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public abstract class ParkingBase implements Parking {
+public class ParkingBase implements Parking {
 
   private String name;
   private int capacity;
@@ -44,6 +44,16 @@ public abstract class ParkingBase implements Parking {
   @Override
   public ParkingType getParkingType() {
     return parkingType;
+  }
+
+  @Override
+  public void addVehicleToParking(){
+    setFreeSpaces(freeSpaces--);
+  }
+
+  @Override
+  public void removeVehicleFromParking(){
+    setFreeSpaces(freeSpaces++);
   }
 
   private void setName(String name) {
