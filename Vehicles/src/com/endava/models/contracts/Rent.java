@@ -1,12 +1,11 @@
 package com.endava.models.contracts;
 
-import java.math.BigDecimal;
 
 public interface Rent {
 
-  BigDecimal getAdditionalCosts();
+  double getAdditionalCosts();
 
   Course getCourse();
 
-  BigDecimal calculatePrice();
+  double calculatePrice();
 }

@@ -3,7 +3,6 @@ package com.endava.models.vehicles;
 import com.endava.models.helpers.ValidationHelper;
 import com.endava.models.vehicles.contracts.Vehicle;
 import com.endava.models.vehicles.enums.VehicleType;
-import java.math.BigDecimal;
 
 public abstract class VehicleBase implements Vehicle {
   private static final String LOAD_CAPACITY_ERR_MESSAGE_FORMAT = "A vehicle with less than %.0f kg or more than %.0f kg cannot exist!";
@@ -14,7 +13,7 @@ public abstract class VehicleBase implements Vehicle {
   private static final double PRICE_MIN_VALUE = 0.10;
 
   private int loadCapacity;
-  private BigDecimal pricePerKilometer;
+  private double pricePerKilometer;
   private VehicleType type;
 
   public VehicleBase(int loadCapacity, double pricePerKilometer, VehicleType type) {
@@ -29,7 +28,7 @@ public abstract class VehicleBase implements Vehicle {
   }
 
   @Override
-  public BigDecimal getPricePerKilometer() {
+  public double getPricePerKilometer() {
     return pricePerKilometer;
   }
 
@@ -63,7 +62,7 @@ public abstract class VehicleBase implements Vehicle {
         PRICE_MIN_VALUE,
         PRICE_MAX_VALUE,
         PRICE_ERR_MESSAGE_FORMAT);
-    this.pricePerKilometer = BigDecimal.valueOf(pricePerKilometer);
+    this.pricePerKilometer = pricePerKilometer;
   }
 
   public abstract String getVehicleName();

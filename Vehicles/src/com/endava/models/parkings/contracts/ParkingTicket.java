@@ -1,6 +1,5 @@
 package com.endava.models.parkings.contracts;
 
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 public interface ParkingTicket {
@@ -15,5 +14,5 @@ public interface ParkingTicket {
 
   OffsetDateTime updateExitTime();
 
-  BigDecimal calculatePrice();
+  double calculatePrice();
 }

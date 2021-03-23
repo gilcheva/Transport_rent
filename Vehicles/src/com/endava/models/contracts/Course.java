@@ -1,7 +1,6 @@
 package com.endava.models.contracts;
 
 import com.endava.models.vehicles.contracts.Vehicle;
-import java.math.BigDecimal;
 
 public interface Course {
 
@@ -13,6 +12,6 @@ public interface Course {
 
   Vehicle getVehicle();
 
-  BigDecimal calculateTransportCosts();
+  double calculateTransportCosts();
 
 }

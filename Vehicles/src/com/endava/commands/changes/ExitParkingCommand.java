@@ -8,7 +8,6 @@ import com.endava.core.contracts.VehiclesFactory;
 import com.endava.core.contracts.VehiclesRepository;
 import com.endava.models.parkings.contracts.Parking;
 import com.endava.models.parkings.contracts.ParkingTicket;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -41,7 +40,7 @@ public class ExitParkingCommand implements Command {
     Parking parking = ticket.getParking();
     parking.removeVehicleFromParking();
     OffsetDateTime exitTime = ticket.updateExitTime();
-    BigDecimal price = ticket.calculatePrice();
+    double price = ticket.calculatePrice();
 
     String sumToPayString = String.format(ticket.getVehicleNumber()+ System.lineSeparator()+
         "Sum to pay: %.2f", price) + System.lineSeparator() +

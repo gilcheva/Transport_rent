@@ -1,7 +1,6 @@
 package com.endava.models.parkings.contracts;
 
 import com.endava.models.parkings.enums.ParkingType;
-import java.math.BigDecimal;
 
 public interface Parking {
 
@@ -11,7 +10,7 @@ public interface Parking {
 
   int getFreeSpaces();
 
-  BigDecimal getHourlyRate();
+  double getHourlyRate();
 
   ParkingType getParkingType();
 

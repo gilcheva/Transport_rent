@@ -3,7 +3,6 @@ package com.endava.models;
 import com.endava.models.contracts.Course;
 import com.endava.models.helpers.ValidationHelper;
 import com.endava.models.vehicles.contracts.Vehicle;
-import java.math.BigDecimal;
 
 public class CourseImpl implements Course {
   private static final int LOCATION_MIN_VALUE = 5;
@@ -79,8 +78,8 @@ public class CourseImpl implements Course {
   }
 
   @Override
-  public BigDecimal calculateTransportCosts() {
-    return getVehicle().getPricePerKilometer().multiply(BigDecimal.valueOf(distance));
+  public double calculateTransportCosts() {
+    return getVehicle().getPricePerKilometer()*distance;
   }
 
   public void setVehicle(Vehicle vehicle) {

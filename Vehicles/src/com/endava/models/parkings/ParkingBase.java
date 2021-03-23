@@ -2,7 +2,6 @@ package com.endava.models.parkings;
 
 import com.endava.models.parkings.contracts.Parking;
 import com.endava.models.parkings.enums.ParkingType;
-import java.math.BigDecimal;
 import java.util.Objects;
 
 public class ParkingBase implements Parking {
@@ -10,10 +9,10 @@ public class ParkingBase implements Parking {
   private String name;
   private int capacity;
   private int freeSpaces;
-  private BigDecimal hourlyRate;
+  private double hourlyRate;
   private ParkingType parkingType;
 
-  public ParkingBase(String name, int capacity, BigDecimal hourlyRate, ParkingType type) {
+  public ParkingBase(String name, int capacity, double hourlyRate, ParkingType type) {
     setName(name);
     setCapacity(capacity);
     setFreeSpaces(capacity);
@@ -37,7 +36,7 @@ public class ParkingBase implements Parking {
   }
 
   @Override
-  public BigDecimal getHourlyRate() {
+  public double getHourlyRate() {
     return hourlyRate;
   }
 
@@ -68,7 +67,7 @@ public class ParkingBase implements Parking {
     this.freeSpaces = freeSpaces;
   }
 
-  private void setHourlyRate(BigDecimal hourlyRate) {
+  private void setHourlyRate(double hourlyRate) {
     this.hourlyRate = hourlyRate;
   }
 
@@ -85,9 +84,9 @@ public class ParkingBase implements Parking {
       return false;
     }
     ParkingBase that = (ParkingBase) o;
-    return getCapacity() == that.getCapacity() && getName().equals(that.getName())
-        && getHourlyRate()
-        .equals(that.getHourlyRate()) && getParkingType() == that.getParkingType();
+    return getCapacity() == that.getCapacity() && getFreeSpaces() == that.getFreeSpaces()
+        && Double.compare(that.getHourlyRate(), getHourlyRate()) == 0 && getName()
+        .equals(that.getName()) && getParkingType() == that.getParkingType();
   }
 
   @Override
