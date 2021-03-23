@@ -66,10 +66,9 @@ public class ParkingTicketImpl implements ParkingTicket {
   }
 
   @Override
-  public BigDecimal calculatePrice() {
-    BigDecimal minuteRate = getParking().getHourlyRate()
-        .divide(BigDecimal.valueOf(60),2, RoundingMode.HALF_UP);
-    return minuteRate.multiply(new BigDecimal(getExitTime().compareTo(getEntranceTime())));
+  public double calculatePrice() {
+    double minuteRate = getParking().getHourlyRate()/60;
+    return minuteRate*(getExitTime().compareTo(getEntranceTime()));
   }
 
   @Override

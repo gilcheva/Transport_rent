@@ -12,5 +12,5 @@ public class Constants {
   public static final String PARKING_TICKET_PRICE = "%s, sum to pay: %.2f.";
   public static final String PARKING_TICKET_EXISTS_MESSAGE = "Parking ticket for %s already exists.";
   public static final String PARKING_TICKET_NOT_EXIST_MESSAGE = "Parking ticket for %s does not exist.";
-  //TODO remove ID from constants.
+
 }
