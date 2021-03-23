@@ -5,6 +5,17 @@ import com.endava.models.CourseImpl;
 import com.endava.models.RentImpl;
 import com.endava.models.contracts.Course;
 import com.endava.models.contracts.Rent;
+import com.endava.models.parkings.AirplaneParkingImpl;
+import com.endava.models.parkings.BusParkingImpl;
+import com.endava.models.parkings.CarParkingImpl;
+import com.endava.models.parkings.ParkingTicketImpl;
+import com.endava.models.parkings.TrainParkingImpl;
+import com.endava.models.parkings.contracts.AirplaneParking;
+import com.endava.models.parkings.contracts.BusParking;
+import com.endava.models.parkings.contracts.CarParking;
+import com.endava.models.parkings.contracts.Parking;
+import com.endava.models.parkings.contracts.ParkingTicket;
+import com.endava.models.parkings.contracts.TrainParking;
 import com.endava.models.vehicles.AirplaneImpl;
 import com.endava.models.vehicles.CarImpl;
 import com.endava.models.vehicles.ShipImpl;
@@ -15,6 +26,8 @@ import com.endava.models.vehicles.contracts.Ship;
 import com.endava.models.vehicles.contracts.Train;
 import com.endava.models.vehicles.contracts.Vehicle;
 import com.endava.models.vehicles.enums.VehicleType;
+import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 
 public class VehiclesFactoryImpl implements VehiclesFactory {
 
@@ -47,5 +60,30 @@ public class VehiclesFactoryImpl implements VehiclesFactory {
   @Override
   public Rent createRent(Course course, double administrativeCosts) {
     return new RentImpl(course, administrativeCosts);
+  }
+
+  @Override
+  public AirplaneParking createAirplaneParking (String name, int capacity, BigDecimal hourlyRate) {
+    return new AirplaneParkingImpl(name, capacity, hourlyRate);
+  }
+
+  @Override
+  public BusParking createBusParking (String name, int capacity, BigDecimal hourlyRate) {
+    return new BusParkingImpl(name, capacity, hourlyRate);
+  }
+
+  @Override
+  public CarParking createCarParking (String name, int capacity, BigDecimal hourlyRate) {
+    return new CarParkingImpl(name, capacity, hourlyRate);
+  }
+
+  @Override
+  public TrainParking createTrainParking (String name, int capacity, BigDecimal hourlyRate) {
+    return new TrainParkingImpl(name, capacity, hourlyRate);
+  }
+
+  @Override
+  public ParkingTicket createParkingTicket (String vehicleNumber, Parking parking) {
+    return new ParkingTicketImpl(vehicleNumber, parking);
   }
 }
