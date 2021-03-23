@@ -5,12 +5,14 @@ import static com.endava.commands.Constants.PARKING_NO_SPACES_MESSAGE;
 import static com.endava.commands.Constants.PARKING_NOT_EXIST_MESSAGE;
 import static com.endava.commands.Constants.PARKING_TICKET_CREATED_MESSAGE;
 import static com.endava.commands.Constants.PARKING_TICKET_EXISTS_MESSAGE;
+import static com.endava.commands.Constants.VEHICLE_NOT_EXIST_MESSAGE;
 
 import com.endava.commands.contracts.Command;
 import com.endava.core.contracts.VehiclesFactory;
 import com.endava.core.contracts.VehiclesRepository;
 import com.endava.models.parkings.contracts.Parking;
 import com.endava.models.parkings.contracts.ParkingTicket;
+import com.endava.models.vehicles.contracts.Vehicle;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -38,15 +40,26 @@ public class CreateParkingTicketCommand implements Command {
         .findAny()
         .orElseThrow(() ->
             new NoSuchElementException(String.format(PARKING_NOT_EXIST_MESSAGE, vehicleNumber)));
-    if (parking.getFreeSpaces() -1 == 0) {
+    if (parking.getFreeSpaces() - 1 == 0) {
       throw new IllegalArgumentException(PARKING_NO_SPACES_MESSAGE);
     }
+
+    Vehicle vehicle = repository.getVehicles().stream()
+        .filter(veh -> vehicleNumber.equals(veh.getRegistrationNumber()))
+        .findAny()
+        .orElseThrow(() ->
+            new NoSuchElementException(String.format(VEHICLE_NOT_EXIST_MESSAGE, vehicleNumber)));
     parking.addVehicleToParking();
 
+    if (repository.getParkingTickets().stream()
+        .anyMatch(tick -> tick.getVehicle().getRegistrationNumber().equals(vehicleNumber))) {
+      throw new IllegalArgumentException(
+          String.format(PARKING_TICKET_EXISTS_MESSAGE,vehicleNumber));
+    }
 
-    ParkingTicket parkingTicket = factory.createParkingTicket(vehicleNumber, parking);
-    addParkingTicket(parkingTicket);
-    return String.format(PARKING_TICKET_CREATED_MESSAGE, parkingTicket.getVehicleNumber());
+    ParkingTicket parkingTicket = factory.createParkingTicket(vehicle, parking);
+    repository.addParkingTicket(parkingTicket);
+    return String.format(PARKING_TICKET_CREATED_MESSAGE, vehicleNumber);
   }
 
   private void validateInput(List<String> parameters) {
@@ -66,12 +79,4 @@ public class CreateParkingTicketCommand implements Command {
     }
   }
 
-  private void addParkingTicket(ParkingTicket ticket) {
-    if (repository.getParkingTickets().contains(ticket)) {
-      throw new IllegalArgumentException(
-          String.format(PARKING_TICKET_EXISTS_MESSAGE, ticket.getVehicleNumber()));
-    } else {
-      repository.addParkingTicket(ticket);
-    }
-  }
 }

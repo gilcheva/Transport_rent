@@ -8,8 +8,8 @@ public class AirplaneImpl extends VehicleBase implements Airplane {
 
   private boolean charter;
 
-  public AirplaneImpl(int loadCapacity, double pricePerKilometer,boolean charter) {
-    super(loadCapacity, pricePerKilometer, VehicleType.AIR);
+  public AirplaneImpl(String registrationNumber, int loadCapacity, double pricePerKilometer,boolean charter) {
+    super(registrationNumber,loadCapacity, pricePerKilometer, VehicleType.AIR);
     setCharter(charter);
   }
 

@@ -22,7 +22,7 @@ public class CreateAirplaneParkingCommand implements Command {
   private final VehiclesRepository repository;
   private String name;
   private int capacity;
-  private BigDecimal hourlyRate;
+  private double hourlyRate;
 
   public CreateAirplaneParkingCommand(VehiclesFactory factory, VehiclesRepository repository) {
     this.factory = factory;
@@ -48,7 +48,7 @@ public class CreateAirplaneParkingCommand implements Command {
     try {
       name = parameters.get(0);
       capacity = Integer.parseInt(parameters.get(1));
-      hourlyRate = BigDecimal.valueOf(Double.parseDouble(parameters.get(2)));
+      hourlyRate = Double.parseDouble(parameters.get(2));
     } catch (Exception e) {
       throw new IllegalArgumentException("Failed to parse CreateAirplaneParking command parameters.");
     }

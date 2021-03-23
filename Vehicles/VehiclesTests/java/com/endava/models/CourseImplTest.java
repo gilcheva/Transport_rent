@@ -17,7 +17,7 @@ class CourseImplTest {
 
   @Before
   public void before() {
-    testVehicle = new CarImpl(14, 2, VehicleType.LAND);
+    testVehicle = new CarImpl("С7320В", 14, 2, VehicleType.LAND);
   }
 
   @Test

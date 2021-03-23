@@ -26,29 +26,28 @@ import com.endava.models.vehicles.contracts.Ship;
 import com.endava.models.vehicles.contracts.Train;
 import com.endava.models.vehicles.contracts.Vehicle;
 import com.endava.models.vehicles.enums.VehicleType;
-import java.math.BigDecimal;
-import java.time.OffsetDateTime;
+
 
 public class VehiclesFactoryImpl implements VehiclesFactory {
 
   @Override
-  public Airplane createAirplane(int loadCapacity, double pricePerKgPerKilometer, boolean charter) {
-    return new AirplaneImpl(loadCapacity, pricePerKgPerKilometer, charter);
+  public Airplane createAirplane(String registrationNumber, int loadCapacity, double pricePerKgPerKilometer, boolean charter) {
+    return new AirplaneImpl(registrationNumber, loadCapacity, pricePerKgPerKilometer, charter);
   }
 
   @Override
-  public Car createCar(int loadCapacity, double pricePerKgPerKilometer, VehicleType type) {
-    return new CarImpl(loadCapacity,pricePerKgPerKilometer,type);
+  public Car createCar(String registrationNumber, int loadCapacity, double pricePerKgPerKilometer, VehicleType type) {
+    return new CarImpl(registrationNumber, loadCapacity,pricePerKgPerKilometer,type);
   }
 
   @Override
-  public Ship createShip(int loadCapacity, double pricePerKgPerKilometer) {
-    return new ShipImpl(loadCapacity, pricePerKgPerKilometer);
+  public Ship createShip(String registrationNumber, int loadCapacity, double pricePerKgPerKilometer) {
+    return new ShipImpl(registrationNumber, loadCapacity, pricePerKgPerKilometer);
   }
 
   @Override
-  public Train createTrain(int passengerCapacity, double pricePerKgPerKilometer, int carts) {
-    return new TrainImpl(passengerCapacity, pricePerKgPerKilometer, carts);
+  public Train createTrain(String registrationNumber, int passengerCapacity, double pricePerKgPerKilometer, int carts) {
+    return new TrainImpl(registrationNumber, passengerCapacity, pricePerKgPerKilometer, carts);
   }
 
   @Override
@@ -63,27 +62,27 @@ public class VehiclesFactoryImpl implements VehiclesFactory {
   }
 
   @Override
-  public AirplaneParking createAirplaneParking (String name, int capacity, BigDecimal hourlyRate) {
+  public AirplaneParking createAirplaneParking (String name, int capacity, double hourlyRate) {
     return new AirplaneParkingImpl(name, capacity, hourlyRate);
   }
 
   @Override
-  public BusParking createBusParking (String name, int capacity, BigDecimal hourlyRate) {
+  public BusParking createBusParking (String name, int capacity, double hourlyRate) {
     return new BusParkingImpl(name, capacity, hourlyRate);
   }
 
   @Override
-  public CarParking createCarParking (String name, int capacity, BigDecimal hourlyRate) {
+  public CarParking createCarParking (String name, int capacity, double hourlyRate) {
     return new CarParkingImpl(name, capacity, hourlyRate);
   }
 
   @Override
-  public TrainParking createTrainParking (String name, int capacity, BigDecimal hourlyRate) {
+  public TrainParking createTrainParking (String name, int capacity, double hourlyRate) {
     return new TrainParkingImpl(name, capacity, hourlyRate);
   }
 
   @Override
-  public ParkingTicket createParkingTicket (String vehicleNumber, Parking parking) {
-    return new ParkingTicketImpl(vehicleNumber, parking);
+  public ParkingTicket createParkingTicket (Vehicle vehicle, Parking parking) {
+    return new ParkingTicketImpl(vehicle, parking);
   }
 }

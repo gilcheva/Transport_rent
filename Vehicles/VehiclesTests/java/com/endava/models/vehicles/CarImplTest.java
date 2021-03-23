@@ -11,7 +11,7 @@ class CarImplTest {
   public void constructor_should_throw_when_loadCapacityLessThanMinValue() {
     // Act and assert
     assertThrows(IllegalArgumentException.class, () -> {
-      new CarImpl(0, 2, VehicleType.LAND);
+      new CarImpl("С7320В", 0, 2, VehicleType.LAND);
     });
   }
 
@@ -19,7 +19,7 @@ class CarImplTest {
   public void constructor_should_throw_when_loadCapacityMoreThanMaxValue() {
     // Act and assert
     assertThrows(IllegalArgumentException.class, () -> {
-      new CarImpl(101, 2, VehicleType.LAND);
+      new CarImpl("С7320В", 101, 2, VehicleType.LAND);
     });
   }
 
@@ -27,7 +27,7 @@ class CarImplTest {
   public void constructor_should_throw_when_pricePerKgPerKmLessThanMinimum() {
     // Act and assert
     assertThrows(IllegalArgumentException.class, () -> {
-      new CarImpl(5, 0.09, VehicleType.LAND);
+      new CarImpl("С7320В", 5, 0.09, VehicleType.LAND);
     });
   }
 
@@ -35,7 +35,7 @@ class CarImplTest {
   public void constructor_should_throw_when_pricePerKmMoreThanMaximum() {
     // Act
     assertThrows(IllegalArgumentException.class, () -> {
-      new CarImpl(5, 21, VehicleType.LAND);
+      new CarImpl("С7320В", 5, 21, VehicleType.LAND);
     });
   }
 }

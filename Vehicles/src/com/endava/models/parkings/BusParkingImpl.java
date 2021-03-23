@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 public class BusParkingImpl extends ParkingBase implements BusParking {
 
-  public BusParkingImpl(String name, int capacity, BigDecimal hourlyRate) {
+  public BusParkingImpl(String name, int capacity, double hourlyRate) {
     super(name, capacity, hourlyRate, ParkingType.BUS);
   }
 }

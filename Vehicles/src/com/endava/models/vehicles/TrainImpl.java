@@ -15,8 +15,8 @@ public class TrainImpl extends VehicleBase implements Train {
 
   private int carts;
 
-  public TrainImpl(int loadCapacity, double pricePerKilometer, int carts) {
-    super(loadCapacity, pricePerKilometer, VehicleType.LAND);
+  public TrainImpl(String registrationNumber, int loadCapacity, double pricePerKilometer, int carts) {
+    super(registrationNumber, loadCapacity, pricePerKilometer, VehicleType.LAND);
     setCarts(carts);
   }
 

@@ -161,7 +161,7 @@ class CreateCourseCommandTest {
   @Test
   public void execute_should_addNewCourse_when_passedValidInput() {
     // Arrange
-    repository.addVehicle(new AirplaneImpl(30, 20, true));
+    repository.addVehicle(new AirplaneImpl("С7320В", 30, 20, true));
 
     // Act
     testCommand.execute(asList("start", "destination", "30", "0"));

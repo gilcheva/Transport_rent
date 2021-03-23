@@ -31,7 +31,7 @@ public class ExitParkingCommand implements Command {
     parseParameters(parameters);
 
     ParkingTicket ticket = repository.getParkingTickets().stream()
-        .filter(tick -> vehicleNumber.equals(tick.getVehicleNumber()))
+        .filter(tick -> vehicleNumber.equals(tick.getVehicle().getRegistrationNumber()))
         .findAny()
         .orElseThrow(() ->
             new NoSuchElementException(
@@ -42,7 +42,7 @@ public class ExitParkingCommand implements Command {
     OffsetDateTime exitTime = ticket.updateExitTime();
     double price = ticket.calculatePrice();
 
-    String sumToPayString = String.format(ticket.getVehicleNumber()+ System.lineSeparator()+
+    String sumToPayString = String.format(vehicleNumber+ System.lineSeparator()+
         "Sum to pay: %.2f", price) + System.lineSeparator() +
         "Entrance time: " + ticket.getEntranceTime().getHour()+":"+ticket.getEntranceTime().getMinute() + System.lineSeparator() +
         "Exit time: " + exitTime.getHour() + ":" + exitTime.getMinute() + System.lineSeparator();

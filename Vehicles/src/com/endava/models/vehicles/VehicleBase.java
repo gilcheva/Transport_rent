@@ -12,14 +12,21 @@ public abstract class VehicleBase implements Vehicle {
   private static final double PRICE_MAX_VALUE = 20;
   private static final double PRICE_MIN_VALUE = 0.10;
 
+  private String registrationNumber;
   private int loadCapacity;
   private double pricePerKilometer;
-  private VehicleType type;
+  private final VehicleType type;
 
-  public VehicleBase(int loadCapacity, double pricePerKilometer, VehicleType type) {
+  public VehicleBase(String registrationNumber, int loadCapacity, double pricePerKilometer,
+      VehicleType type) {
+    setRegistrationNumber(registrationNumber);
     setLoadCapacity(loadCapacity);
     setPricePerKilometer(pricePerKilometer);
     this.type = type;
+  }
+
+  public String getRegistrationNumber() {
+    return registrationNumber;
   }
 
   @Override
@@ -47,6 +54,10 @@ public abstract class VehicleBase implements Vehicle {
 
   protected String getLoadCapacityErrorMessageFormat() {
     return LOAD_CAPACITY_ERR_MESSAGE_FORMAT;
+  }
+
+  private void setRegistrationNumber(String registrationNumber) {
+    this.registrationNumber = registrationNumber;
   }
 
   private void setLoadCapacity(int loadCapacity) {

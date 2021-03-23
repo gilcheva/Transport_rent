@@ -10,7 +10,7 @@ class TrainImplTest {
   public void constructor_should_throw_when_loadCapacityLessThanMinValue() {
     // Act and assert
     assertThrows(IllegalArgumentException.class, () -> {
-      new TrainImpl(29, 2, 3);
+      new TrainImpl("С7320В", 29, 2, 3);
     });
   }
 
@@ -18,7 +18,7 @@ class TrainImplTest {
   public void constructor_should_throw_when_loadCapacityMoreThanMaxValue() {
     // Act and assert
     assertThrows(IllegalArgumentException.class, () -> {
-      new TrainImpl(501, 2, 3);
+      new TrainImpl("С7320В", 501, 2, 3);
     });
   }
 
@@ -26,7 +26,7 @@ class TrainImplTest {
   public void constructor_should_throw_when_pricePerKmLessThanMinimum() {
     // Act and assert
     assertThrows(IllegalArgumentException.class, () -> {
-      new TrainImpl(5, 0.05, 3);
+      new TrainImpl("С7320В", 5, 0.05, 3);
     });
   }
 
@@ -34,7 +34,7 @@ class TrainImplTest {
   public void constructor_should_throw_when_pricePerKmMoreThanMaximum() {
     // Act and assert
     assertThrows(IllegalArgumentException.class, () -> {
-      new TrainImpl(5, 21, 3);
+      new TrainImpl("С7320В", 5, 21, 3);
     });
   }
 
@@ -42,7 +42,7 @@ class TrainImplTest {
   public void constructor_should_throw_when_cartsLessThanMinimum() {
     // Act and assert
     assertThrows(IllegalArgumentException.class, () -> {
-      new TrainImpl(5, 2, 0);
+      new TrainImpl("С7320В",5, 2, 0);
     });
   }
 
@@ -50,7 +50,7 @@ class TrainImplTest {
   public void constructor_should_throw_when_cartsMoreThanMaximum() {
     // Act and assert
     assertThrows(IllegalArgumentException.class, () -> {
-      new TrainImpl(5, 2, 16);
+      new TrainImpl("С7320В", 5, 2, 16);
     });
   }
 

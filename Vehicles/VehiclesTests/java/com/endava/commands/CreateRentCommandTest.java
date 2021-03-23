@@ -53,7 +53,7 @@ class CreateRentCommandTest {
     List<String> arguments = new ArrayList<>();
     arguments.add("f");
     arguments.add("20");
-    repository.addCourse(new CourseImpl( "start","destination",30, new AirplaneImpl(30, 20, true)));
+    repository.addCourse(new CourseImpl( "start","destination",30, new AirplaneImpl("С7320В", 30, 20, true)));
 
     // Act
     assertThrows(IllegalArgumentException.class, () -> {
@@ -67,7 +67,7 @@ class CreateRentCommandTest {
     List<String> arguments = new ArrayList<>();
     arguments.add("1");
     arguments.add("20");
-    repository.addCourse(new CourseImpl( "start","destination",30, new AirplaneImpl(30, 20, true)));
+    repository.addCourse(new CourseImpl( "start","destination",30, new AirplaneImpl("С7320В", 30, 20, true)));
 
     // Act
     assertThrows(IndexOutOfBoundsException.class, () -> {
@@ -105,7 +105,7 @@ class CreateRentCommandTest {
   @Test
   public void execute_should_addNewRent_when_passedValidInput() {
     // Arrange
-    Vehicle vehicle = new AirplaneImpl(30, 20, true);
+    Vehicle vehicle = new AirplaneImpl("С7320В", 30, 20, true);
     repository.addVehicle(vehicle);
     repository.addCourse(new CourseImpl( "start","destination",30, vehicle));
 

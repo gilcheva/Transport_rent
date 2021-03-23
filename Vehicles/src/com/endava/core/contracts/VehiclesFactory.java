@@ -14,30 +14,28 @@ import com.endava.models.vehicles.contracts.Ship;
 import com.endava.models.vehicles.contracts.Train;
 import com.endava.models.vehicles.contracts.Vehicle;
 import com.endava.models.vehicles.enums.VehicleType;
-import java.math.BigDecimal;
-import java.time.OffsetDateTime;
 
 public interface VehiclesFactory {
 
-  Airplane createAirplane(int loadCapacity, double pricePerKgPerKilometer,boolean charter);
+  Airplane createAirplane(String registrationNumber, int loadCapacity, double pricePerKgPerKilometer,boolean charter);
 
-  Car createCar(int loadCapacity, double pricePerKgPerKilometer, VehicleType type);
+  Car createCar(String registrationNumber,int loadCapacity, double pricePerKgPerKilometer, VehicleType type);
 
-  Ship createShip(int loadCapacity, double pricePerKgPerKilometer);
+  Ship createShip(String registrationNumber,int loadCapacity, double pricePerKgPerKilometer);
 
-  Train createTrain(int passengerCapacity, double pricePerKgPerKilometer, int carts);
+  Train createTrain(String registrationNumber,int passengerCapacity, double pricePerKgPerKilometer, int carts);
 
   Course createCourse(String startLocation, String destination, int distance, Vehicle vehicle);
 
   Rent createRent(Course course, double administrativeCosts);
 
-  AirplaneParking createAirplaneParking (String name, int capacity, BigDecimal hourlyRate);
+  AirplaneParking createAirplaneParking (String name, int capacity, double hourlyRate);
 
-  BusParking createBusParking (String name, int capacity, BigDecimal hourlyRate);
+  BusParking createBusParking (String name, int capacity, double hourlyRate);
 
-  CarParking createCarParking (String name, int capacity, BigDecimal hourlyRate);
+  CarParking createCarParking (String name, int capacity, double hourlyRate);
 
-  TrainParking createTrainParking (String name, int capacity, BigDecimal hourlyRate);
+  TrainParking createTrainParking (String name, int capacity, double hourlyRate);
 
-  ParkingTicket createParkingTicket (String vehicleNumber, Parking parking);
+  ParkingTicket createParkingTicket (Vehicle vehicle, Parking parking);
 }

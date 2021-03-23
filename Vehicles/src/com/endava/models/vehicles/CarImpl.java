@@ -9,8 +9,8 @@ public class CarImpl extends VehicleBase implements Car {
   private static final int LOAD_CAPACITY_MAX_VALUE = 100;
   private static final int LOAD_CAPACITY_MIN_VALUE = 1;
 
-  public CarImpl(int loadCapacity, double pricePerKgPerKilometer, VehicleType type) {
-    super(loadCapacity, pricePerKgPerKilometer, type);
+  public CarImpl(String registrationNumber, int loadCapacity, double pricePerKgPerKilometer, VehicleType type) {
+    super(registrationNumber,loadCapacity, pricePerKgPerKilometer, type);
   }
   @Override
   protected int getLoadCapacityMaxValue() {

@@ -3,24 +3,27 @@ package com.endava.models.parkings;
 import com.endava.models.helpers.ValidationHelper;
 import com.endava.models.parkings.contracts.Parking;
 import com.endava.models.parkings.contracts.ParkingTicket;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import com.endava.models.vehicles.contracts.Vehicle;
 import java.time.OffsetDateTime;
 import java.util.Objects;
 
 public class ParkingTicketImpl implements ParkingTicket {
 
-  private String vehicleNumber;
+  private Vehicle vehicle;
   private OffsetDateTime entranceTime;
   private OffsetDateTime exitTime;
   private Parking parking;
 
-  public ParkingTicketImpl(String vehicleNumber, Parking parking) {
-    setVehicleNumber(vehicleNumber);
+  public ParkingTicketImpl(Vehicle vehicle, Parking parking) {
+    setVehicle(vehicle);
     setEntranceTime(OffsetDateTime.now());
     setExitTime(entranceTime);
-    setVehicleNumber(vehicleNumber);
     setParking(parking);
+  }
+
+  @Override
+  public Vehicle getVehicle() {
+    return vehicle;
   }
 
   @Override
@@ -31,11 +34,6 @@ public class ParkingTicketImpl implements ParkingTicket {
   @Override
   public OffsetDateTime getExitTime() {
     return exitTime;
-  }
-
-  @Override
-  public String getVehicleNumber() {
-    return vehicleNumber;
   }
 
   @Override
@@ -52,8 +50,8 @@ public class ParkingTicketImpl implements ParkingTicket {
     return exitTime;
   }
 
-  private void setVehicleNumber(String vehicleNumber) {
-    this.vehicleNumber = vehicleNumber;
+  private void setVehicle(Vehicle vehicle) {
+    this.vehicle = vehicle;
   }
 
   private void setParking(Parking parking) {
@@ -80,18 +78,18 @@ public class ParkingTicketImpl implements ParkingTicket {
       return false;
     }
     ParkingTicketImpl that = (ParkingTicketImpl) o;
-    return getVehicleNumber().equals(that.getVehicleNumber()) && getEntranceTime()
+    return getVehicle().equals(that.getVehicle()) && getEntranceTime()
         .equals(that.getEntranceTime()) && getParking().equals(that.getParking());
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(getVehicleNumber(), getEntranceTime());
+    return Objects.hash(getVehicle().getRegistrationNumber(), getEntranceTime());
   }
 
   @Override
   public String toString() {
-    return getVehicleNumber() + " ----" + System.lineSeparator() +
+    return getVehicle().getRegistrationNumber() + " ----" + System.lineSeparator() +
         "Entrance time: " + getEntranceTime().getHour()+":"+getEntranceTime().getMinute() + System.lineSeparator() +
         "Parking: " + getParking().getName() + System.lineSeparator() +
         String.format("Rate per hour: %.2f", getParking().getHourlyRate()) + System.lineSeparator();

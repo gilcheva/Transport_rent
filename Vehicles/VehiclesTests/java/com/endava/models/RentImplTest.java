@@ -15,7 +15,7 @@ class RentImplTest {
 
   @Before
   public void before() {
-    testVehicle = new AirplaneImpl(30, 20, true);
+    testVehicle = new AirplaneImpl("С7320В", 30, 20, true);
     testCourse = new CourseImpl("start","destination",30, testVehicle);
   }
 

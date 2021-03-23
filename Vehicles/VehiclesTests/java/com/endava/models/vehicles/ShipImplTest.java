@@ -10,7 +10,7 @@ class ShipImplTest {
   public void constructor_should_throw_when_loadCapacityLessThanMinValue() {
     // Act and assert
     assertThrows(IllegalArgumentException.class, () -> {
-      new ShipImpl(19, 2);
+      new ShipImpl("С7320В",19, 2);
     });
   }
 
@@ -18,7 +18,7 @@ class ShipImplTest {
   public void constructor_should_throw_when_loadCapacityMoreThanMaxValue() {
     // Act and assert
     assertThrows(IllegalArgumentException.class, () -> {
-      new ShipImpl(1001, 2);
+      new ShipImpl("С7320В", 1001, 2);
     });
   }
 
@@ -26,7 +26,7 @@ class ShipImplTest {
   public void constructor_should_throw_when_pricePerKmLessThanMinimum() {
     // Act and assert
     assertThrows(IllegalArgumentException.class, () -> {
-      new ShipImpl(20, 0);
+      new ShipImpl("С7320В", 20, 0);
     });
   }
 
@@ -34,7 +34,7 @@ class ShipImplTest {
   public void constructor_should_throw_when_pricePerKmMoreThanMaximum() {
     // Act and assert
     assertThrows(IllegalArgumentException.class, () -> {
-      new ShipImpl(20, 21);
+      new ShipImpl("С7320В", 20, 21);
     });
   }
 

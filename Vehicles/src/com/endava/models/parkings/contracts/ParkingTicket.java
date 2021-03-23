@@ -1,14 +1,15 @@
 package com.endava.models.parkings.contracts;
 
+import com.endava.models.vehicles.contracts.Vehicle;
 import java.time.OffsetDateTime;
 
 public interface ParkingTicket {
 
+  Vehicle getVehicle();
+
   OffsetDateTime getEntranceTime();
 
   OffsetDateTime getExitTime();
-
-  String getVehicleNumber();
 
   Parking getParking();
 
