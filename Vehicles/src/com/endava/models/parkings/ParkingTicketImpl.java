@@ -2,21 +2,22 @@ package com.endava.models.parkings;
 
 import com.endava.models.helpers.ValidationHelper;
 import com.endava.models.parkings.contracts.Parking;
-import com.endava.models.parkings.contracts.ParkingThicket;
+import com.endava.models.parkings.contracts.ParkingTicket;
 import java.math.BigDecimal;
-import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.time.OffsetDateTime;
+import java.util.Objects;
 
-public class ParkingThicketImpl implements ParkingThicket {
+public class ParkingTicketImpl implements ParkingTicket {
 
   private String vehicleNumber;
   private OffsetDateTime entranceTime;
   private OffsetDateTime exitTime;
   private Parking parking;
 
-  public ParkingThicketImpl(String vehicleNumber, OffsetDateTime entranceTime, Parking parking) {
+  public ParkingTicketImpl(String vehicleNumber, Parking parking) {
     setVehicleNumber(vehicleNumber);
-    setEntranceTime(entranceTime);
+    setEntranceTime(OffsetDateTime.now());
     setExitTime(entranceTime);
     setVehicleNumber(vehicleNumber);
     setParking(parking);
@@ -46,8 +47,9 @@ public class ParkingThicketImpl implements ParkingThicket {
     this.entranceTime = entranceTime;
   }
 
-  private void setExitTime(OffsetDateTime exitTime) {
+  private OffsetDateTime setExitTime(OffsetDateTime exitTime) {
     this.exitTime = exitTime;
+    return exitTime;
   }
 
   private void setVehicleNumber(String vehicleNumber) {
@@ -59,20 +61,39 @@ public class ParkingThicketImpl implements ParkingThicket {
     this.parking = parking;
   }
 
+  public OffsetDateTime updateExitTime() {
+    return setExitTime(OffsetDateTime.now());
+  }
   @Override
   public BigDecimal calculatePrice() {
-    return getParking().getHourlyRate()
-        .multiply(new BigDecimal(getEntranceTime().compareTo(getExitTime())));
+    BigDecimal minuteRate = getParking().getHourlyRate()
+        .divide(BigDecimal.valueOf(60),2, RoundingMode.HALF_UP);
+    return minuteRate.multiply(new BigDecimal(getExitTime().compareTo(getEntranceTime())));
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof ParkingTicketImpl)) {
+      return false;
+    }
+    ParkingTicketImpl that = (ParkingTicketImpl) o;
+    return getVehicleNumber().equals(that.getVehicleNumber()) && getEntranceTime()
+        .equals(that.getEntranceTime()) && getParking().equals(that.getParking());
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getVehicleNumber(), getEntranceTime());
   }
 
   @Override
   public String toString() {
     return getVehicleNumber() + " ----" + System.lineSeparator() +
-        "Entrance time: " + getEntranceTime() + System.lineSeparator() +
-        "Exit time: " + getExitTime() + System.lineSeparator() +
+        "Entrance time: " + getEntranceTime().getHour()+":"+getEntranceTime().getMinute() + System.lineSeparator() +
         "Parking: " + getParking().getName() + System.lineSeparator() +
-        String.format("Rate per hour: %.2f", getParking().getHourlyRate()) + System.lineSeparator()
-        +
-        String.format("Sum to pay: %.2f", calculatePrice()) + System.lineSeparator();
+        String.format("Rate per hour: %.2f", getParking().getHourlyRate()) + System.lineSeparator();
   }
 }

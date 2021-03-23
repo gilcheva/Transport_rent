@@ -3,6 +3,7 @@ package com.endava.models.parkings;
 import com.endava.models.parkings.contracts.Parking;
 import com.endava.models.parkings.enums.ParkingType;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public abstract class ParkingBase implements Parking {
 
@@ -63,6 +64,25 @@ public abstract class ParkingBase implements Parking {
 
   public void setParkingType(ParkingType parkingType) {
     this.parkingType = parkingType;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof ParkingBase)) {
+      return false;
+    }
+    ParkingBase that = (ParkingBase) o;
+    return getCapacity() == that.getCapacity() && getName().equals(that.getName())
+        && getHourlyRate()
+        .equals(that.getHourlyRate()) && getParkingType() == that.getParkingType();
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getName());
   }
 
   @Override

@@ -3,7 +3,7 @@ package com.endava.models.parkings.contracts;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
-public interface ParkingThicket {
+public interface ParkingTicket {
 
   OffsetDateTime getEntranceTime();
 
@@ -12,6 +12,8 @@ public interface ParkingThicket {
   String getVehicleNumber();
 
   Parking getParking();
+
+  OffsetDateTime updateExitTime();
 
   BigDecimal calculatePrice();
 }
