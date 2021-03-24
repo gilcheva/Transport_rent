@@ -1,5 +1,6 @@
 package com.endava.commands.creation;
 
+import static com.endava.commands.Constants.FAILED_TO_PARSE_COMMAND_MESSAGE;
 import static com.endava.commands.Constants.INVALID_NUMBER_OF_ARGUMENTS;
 
 import com.endava.commands.contracts.Command;
@@ -46,7 +47,7 @@ public class CreateRentCommand implements Command {
       courseID = Integer.parseInt(parameters.get(0));
       administrativeCosts = Double.parseDouble(parameters.get(1));
     } catch (Exception e) {
-      throw new IllegalArgumentException("Failed to parse CreateRent command parameters.");
+      throw new IllegalArgumentException(String.format(FAILED_TO_PARSE_COMMAND_MESSAGE, getClass().getSimpleName()));
     }
   }
 }

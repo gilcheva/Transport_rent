@@ -1,5 +1,6 @@
 package com.endava.commands.creation;
 
+import static com.endava.commands.Constants.FAILED_TO_PARSE_COMMAND_MESSAGE;
 import static com.endava.commands.Constants.INVALID_NUMBER_OF_ARGUMENTS;
 import static com.endava.commands.Constants.PARKING_NO_SPACES_MESSAGE;
 import static com.endava.commands.Constants.PARKING_NOT_EXIST_MESSAGE;
@@ -74,9 +75,7 @@ public class CreateParkingTicketCommand implements Command {
       vehicleNumber = parameters.get(0);
       parkingName = parameters.get(1);
     } catch (Exception e) {
-      throw new IllegalArgumentException(
-          "Failed to parse CreateParkingTicket command parameters.");
-    }
+      throw new IllegalArgumentException(String.format(FAILED_TO_PARSE_COMMAND_MESSAGE, getClass().getSimpleName())); }
   }
 
 }

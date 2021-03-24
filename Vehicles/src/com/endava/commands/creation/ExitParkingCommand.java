@@ -1,4 +1,4 @@
-package com.endava.commands.changes;
+package com.endava.commands.creation;
 
 import static com.endava.commands.Constants.INVALID_NUMBER_OF_ARGUMENTS;
 import static com.endava.commands.Constants.PARKING_TICKET_NOT_EXIST_MESSAGE;

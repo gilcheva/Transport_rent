@@ -1,5 +1,6 @@
 package com.endava.commands.creation;
 
+import static com.endava.commands.Constants.FAILED_TO_PARSE_COMMAND_MESSAGE;
 import static com.endava.commands.Constants.INVALID_NUMBER_OF_ARGUMENTS;
 import static com.endava.commands.Constants.VEHICLE_CREATED_MESSAGE;
 
@@ -47,7 +48,6 @@ public class CreateCarCommand implements Command {
       pricePerKgPerKilometer = Double.parseDouble(parameters.get(2));
       type = VehicleType.byOrdinal(Integer.parseInt(parameters.get(3)));
     } catch (Exception e) {
-      throw new IllegalArgumentException("Failed to parse CreateCar command parameters.");
-    }
+      throw new IllegalArgumentException(String.format(FAILED_TO_PARSE_COMMAND_MESSAGE, getClass().getSimpleName())); }
   }
 }

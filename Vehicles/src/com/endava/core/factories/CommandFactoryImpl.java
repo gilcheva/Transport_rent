@@ -12,13 +12,16 @@ import com.endava.commands.creation.CreateRentCommand;
 import com.endava.commands.creation.CreateShipCommand;
 import com.endava.commands.creation.CreateTrainCommand;
 import com.endava.commands.creation.CreateTrainParkingCommand;
-import com.endava.commands.changes.ExitParkingCommand;
+import com.endava.commands.creation.ExitParkingCommand;
 import com.endava.commands.enums.CommandType;
+import com.endava.commands.listing.FilterVehiclesByTypeCommand;
 import com.endava.commands.listing.ListCoursesCommand;
 import com.endava.commands.listing.ListParkingTicketsCommand;
 import com.endava.commands.listing.ListParkingsCommand;
 import com.endava.commands.listing.ListRentsCommand;
 import com.endava.commands.listing.ListVehiclesCommand;
+import com.endava.commands.listing.SortVehiclesByLoadCapacityCommand;
+import com.endava.commands.listing.SortVehiclesByPriceCommand;
 import com.endava.core.contracts.CommandFactory;
 import com.endava.core.contracts.VehiclesFactory;
 import com.endava.core.contracts.VehiclesRepository;
@@ -93,6 +96,15 @@ public class CommandFactoryImpl implements CommandFactory {
       case LISTPARKINGTICKETS:
         return new ListParkingTicketsCommand(vehiclesRepository);
 
+      case SORTVEHICLESBYLOADCAPACITY:
+        return new SortVehiclesByLoadCapacityCommand(vehiclesRepository);
+
+      case SORTVEHICLESBYPRICE:
+        return new SortVehiclesByPriceCommand(vehiclesRepository);
+
+      case FILTERVEHICLESBYTYPE:
+        return new FilterVehiclesByTypeCommand(vehiclesRepository);
+        
     }
     throw new IllegalArgumentException(String.format(INVALID_COMMAND, commandName));
   }

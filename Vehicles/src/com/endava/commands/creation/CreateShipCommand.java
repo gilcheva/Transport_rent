@@ -1,5 +1,6 @@
 package com.endava.commands.creation;
 
+import static com.endava.commands.Constants.FAILED_TO_PARSE_COMMAND_MESSAGE;
 import static com.endava.commands.Constants.INVALID_NUMBER_OF_ARGUMENTS;
 import static com.endava.commands.Constants.VEHICLE_CREATED_MESSAGE;
 
@@ -11,6 +12,7 @@ import com.endava.models.vehicles.contracts.Vehicle;
 import java.util.List;
 
 public class CreateShipCommand implements Command {
+
   private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 3;
 
   private final VehiclesFactory factory;
@@ -30,12 +32,14 @@ public class CreateShipCommand implements Command {
     parseParameters(parameters);
     Vehicle ship = factory.createShip(registrationNumber, loadCapacity, pricePerKgPerKilometer);
     repository.addVehicle(ship);
-    return String.format(VEHICLE_CREATED_MESSAGE, ship.getType(), repository.getVehicles().size() - 1);
+    return String
+        .format(VEHICLE_CREATED_MESSAGE, ship.getType(), repository.getVehicles().size() - 1);
   }
 
   private void validateInput(List<String> parameters) {
     if (parameters.size() != EXPECTED_NUMBER_OF_ARGUMENTS) {
-      throw new IllegalArgumentException(String.format(INVALID_NUMBER_OF_ARGUMENTS, EXPECTED_NUMBER_OF_ARGUMENTS, parameters.size()));
+      throw new IllegalArgumentException(String
+          .format(INVALID_NUMBER_OF_ARGUMENTS, EXPECTED_NUMBER_OF_ARGUMENTS, parameters.size()));
     }
   }
 
@@ -45,7 +49,8 @@ public class CreateShipCommand implements Command {
       loadCapacity = Integer.parseInt(parameters.get(1));
       pricePerKgPerKilometer = Double.parseDouble(parameters.get(2));
     } catch (Exception e) {
-      throw new IllegalArgumentException("Failed to parse CreateShip command parameters.");
+      throw new IllegalArgumentException(
+          String.format(FAILED_TO_PARSE_COMMAND_MESSAGE, getClass().getSimpleName()));
     }
   }
 }

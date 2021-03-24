@@ -81,6 +81,7 @@ public abstract class VehicleBase implements Vehicle {
   @Override
   public String toString() {
     return getVehicleName() + " ----" + System.lineSeparator() +
+        "Registration number: " + registrationNumber + System.lineSeparator() +
         "Load capacity: " + loadCapacity + System.lineSeparator() +
         String.format("Price per kilometer: %.2f", pricePerKilometer) + System.lineSeparator() +
         "Vehicle type: " + type + System.lineSeparator();

@@ -1,5 +1,6 @@
 package com.endava.commands.creation;
 
+import static com.endava.commands.Constants.FAILED_TO_PARSE_COMMAND_MESSAGE;
 import static com.endava.commands.Constants.INVALID_NUMBER_OF_ARGUMENTS;
 
 import com.endava.commands.contracts.Command;
@@ -50,7 +51,6 @@ public class CreateCourseCommand implements Command {
       distance = Integer.parseInt(parameters.get(2));
       vehicleID = Integer.parseInt(parameters.get(3));
     } catch (Exception e) {
-      throw new IllegalArgumentException("Failed to parse CreateCourse command parameters.");
-    }
+      throw new IllegalArgumentException(String.format(FAILED_TO_PARSE_COMMAND_MESSAGE, getClass().getSimpleName())); }
   }
 }
