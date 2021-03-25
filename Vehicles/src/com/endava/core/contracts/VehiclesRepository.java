@@ -7,7 +7,6 @@ import com.endava.models.parkings.contracts.ParkingTicket;
 import com.endava.models.vehicles.contracts.Vehicle;
 import com.endava.models.vehicles.enums.VehicleType;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 public interface VehiclesRepository {
@@ -33,6 +32,18 @@ public interface VehiclesRepository {
   void addParkingTicket(ParkingTicket thicket);
 
   void removeParkingTicket(ParkingTicket ticket);
+
+  Vehicle findVehicleById (int vehicleId);
+
+  Vehicle findVehicleByNumber (String vehicleNumber);
+
+  Course findCourseById (int courseId);
+
+  Parking findParkingByName (String parkingName);
+
+  ParkingTicket findTicketByVehicleNumber(String vehicleNumber);
+
+  boolean vehicleHasParkingTicket (String vehicleNumber);
 
   List<Vehicle> filterByType(VehicleType vehicleType);
 

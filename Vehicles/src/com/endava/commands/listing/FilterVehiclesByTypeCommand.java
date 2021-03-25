@@ -6,10 +6,13 @@ import static com.endava.commands.Constants.JOIN_DELIMITER;
 
 import com.endava.commands.contracts.Command;
 import com.endava.core.contracts.VehiclesRepository;
+import com.endava.models.parkings.ParkingTicketImpl;
 import com.endava.models.vehicles.contracts.Vehicle;
 import com.endava.models.vehicles.enums.VehicleType;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class FilterVehiclesByTypeCommand implements Command {
@@ -44,6 +47,8 @@ public class FilterVehiclesByTypeCommand implements Command {
   }
 
   private String printFilteredExecute() {
+//    EnumSet<VehicleType> filtered = ;
+//    List <Vehicle> filtered = ParkingTicketImpl.groupParkingsByType(repository.getParkings());
     List<Vehicle> filtered = repository.sortedByNumber((repository.filterByType(type)));
     StringBuilder sb = new StringBuilder();
     sb.append(System.lineSeparator());

@@ -27,7 +27,7 @@ public class CreateRentCommand implements Command {
   public String execute(List<String> parameters) {
     validateInput(parameters);
     parseParameters(parameters);
-    Course course = repository.getCourses().get(courseID);
+    Course course = repository.findCourseById(courseID);
     Rent rent = factory.createRent(course, administrativeCosts);
     repository.addRent(rent);
     return String.format("Rent with ID %d was created.", repository.getRents().size() - 1);

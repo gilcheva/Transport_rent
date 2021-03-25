@@ -1,6 +1,9 @@
 package com.endava.models.helpers;
 
-public class ValidationHelper {
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class Helper {
 
   public static void validateLimits(double value, double minValue, double maxValue,
       String errMessageFormat) {
@@ -13,6 +16,13 @@ public class ValidationHelper {
     if (obj == null) {
       throw new IllegalArgumentException();
     }
+  }
+
+  public static String dateFormat(OffsetDateTime time) {
+    String date = time.toString();
+    OffsetDateTime dt = OffsetDateTime.parse(date);
+    DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd' T 'HH:mm");
+    return fmt.format(dt);
   }
 
 }

@@ -2,6 +2,8 @@ package com.endava.commands.creation;
 
 import static com.endava.commands.Constants.INVALID_NUMBER_OF_ARGUMENTS;
 import static com.endava.commands.Constants.PARKING_TICKET_NOT_EXIST_MESSAGE;
+import static com.endava.commands.Constants.PARKING_TICKET_PRICE;
+import static com.endava.models.helpers.Helper.dateFormat;
 
 import com.endava.commands.contracts.Command;
 import com.endava.core.contracts.VehiclesFactory;
@@ -29,23 +31,11 @@ public class ExitParkingCommand implements Command {
   public String execute(List<String> parameters) {
     validateInput(parameters);
     parseParameters(parameters);
-
-    ParkingTicket ticket = repository.getParkingTickets().stream()
-        .filter(tick -> vehicleNumber.equals(tick.getVehicle().getRegistrationNumber()))
-        .findAny()
-        .orElseThrow(() ->
-            new NoSuchElementException(
-                String.format(PARKING_TICKET_NOT_EXIST_MESSAGE, vehicleNumber)));
-
+    ParkingTicket ticket = repository.findTicketByVehicleNumber(vehicleNumber);
     Parking parking = ticket.getParking();
     parking.removeVehicleFromParking();
     OffsetDateTime exitTime = ticket.updateExitTime();
-    double price = ticket.calculatePrice();
-
-    String sumToPayString = String.format(vehicleNumber+ System.lineSeparator()+
-        "Sum to pay: %.2f", price) + System.lineSeparator() +
-        "Entrance time: " + ticket.getEntranceTime().getHour()+":"+ticket.getEntranceTime().getMinute() + System.lineSeparator() +
-        "Exit time: " + exitTime.getHour() + ":" + exitTime.getMinute() + System.lineSeparator();
+    String sumToPayString = printSumToPay(ticket);
     repository.removeParkingTicket(ticket);
     return sumToPayString;
   }
@@ -66,4 +56,9 @@ public class ExitParkingCommand implements Command {
     }
   }
 
+  private String printSumToPay(ParkingTicket ticket){
+   return ticket + String.format(
+        "Exit time:     " + dateFormat(ticket.getExitTime()) + System.lineSeparator()+
+            PARKING_TICKET_PRICE, ticket.calculatePrice()) + System.lineSeparator();
+  }
 }

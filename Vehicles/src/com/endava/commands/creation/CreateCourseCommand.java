@@ -29,7 +29,7 @@ public class CreateCourseCommand implements Command {
   public String execute(List<String> parameters) {
     validateInput(parameters);
     parseParameters(parameters);
-    Vehicle vehicle = repository.getVehicles().get(vehicleID);
+    Vehicle vehicle = repository.findVehicleById(vehicleID);
     Course course = factory.createCourse(startLocation, destination, distance, vehicle);
     repository.addCourse(course);
     return String.format("Course with ID %d was created.", repository.getCourses().size() - 1);
