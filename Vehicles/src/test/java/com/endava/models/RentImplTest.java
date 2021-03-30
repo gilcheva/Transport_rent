@@ -1,10 +1,12 @@
 package com.endava.models;
 
-import com.endava.models.contracts.Course;
-import com.endava.models.contracts.Rent;
-import com.endava.models.vehicles.AirplaneImpl;
-import com.endava.models.vehicles.contracts.Vehicle;
-import org.junit.Before;
+import com.endava.models.courses.Course;
+import com.endava.models.courses.Rent;
+import com.endava.models.courses.impl.CourseImpl;
+import com.endava.models.courses.impl.RentImpl;
+import com.endava.models.vehicles.impl.AirplaneImpl;
+import com.endava.models.vehicles.Vehicle;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,7 +15,7 @@ class RentImplTest {
     private Vehicle testVehicle;
     private Course testCourse;
 
-    @Before
+    @BeforeEach
     public void before() {
         testVehicle = new AirplaneImpl("С7320В", 30, 20, true);
         testCourse = new CourseImpl("start","destination",30, testVehicle);

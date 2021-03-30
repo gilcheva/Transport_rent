@@ -1,13 +1,13 @@
 package com.endava.commands.creation;
 
-import static com.endava.commands.Constants.FAILED_TO_PARSE_COMMAND_MESSAGE;
-import static com.endava.commands.Constants.INVALID_NUMBER_OF_ARGUMENTS;
+import static com.endava.commands.constants.Constants.FAILED_TO_PARSE_COMMAND_MESSAGE;
+import static com.endava.commands.constants.Constants.INVALID_NUMBER_OF_ARGUMENTS;
 
-import com.endava.commands.contracts.Command;
-import com.endava.core.contracts.VehiclesFactory;
-import com.endava.core.contracts.VehiclesRepository;
-import com.endava.models.contracts.Course;
-import com.endava.models.vehicles.contracts.Vehicle;
+import com.endava.commands.Command;
+import com.endava.core.VehiclesFactory;
+import com.endava.core.VehiclesRepository;
+import com.endava.models.courses.Course;
+import com.endava.models.vehicles.Vehicle;
 
 import java.sql.SQLException;
 import java.util.List;

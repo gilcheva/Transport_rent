@@ -1,5 +1,6 @@
 package com.endava.models.vehicles;
 
+import com.endava.models.vehicles.impl.AirplaneImpl;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

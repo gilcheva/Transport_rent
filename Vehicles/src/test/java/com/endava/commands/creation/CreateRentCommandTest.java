@@ -1,15 +1,13 @@
 package com.endava.commands.creation;
 
-import com.endava.commands.contracts.Command;
-import com.endava.core.VehiclesRepositoryImpl;
-import com.endava.core.VehiclesRepositorySQLImpl;
-import com.endava.core.contracts.VehiclesFactory;
-import com.endava.core.contracts.VehiclesRepository;
+import com.endava.commands.Command;
+import com.endava.core.repositories.VehiclesRepositorySQLImpl;
+import com.endava.core.VehiclesFactory;
+import com.endava.core.VehiclesRepository;
 import com.endava.core.factories.VehiclesFactoryImpl;
-import com.endava.models.CourseImpl;
-import com.endava.models.vehicles.AirplaneImpl;
-import com.endava.models.vehicles.contracts.Airplane;
-import com.endava.models.vehicles.contracts.Vehicle;
+import com.endava.models.courses.impl.CourseImpl;
+import com.endava.models.vehicles.impl.AirplaneImpl;
+import com.endava.models.vehicles.Airplane;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
