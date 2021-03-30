@@ -1,15 +1,15 @@
 package com.endava.commands.creation;
 
-import static com.endava.commands.Constants.FAILED_TO_PARSE_COMMAND_MESSAGE;
-import static com.endava.commands.Constants.INVALID_NUMBER_OF_ARGUMENTS;
-import static com.endava.commands.Constants.PARKING_CREATED_MESSAGE;
-import static com.endava.commands.Constants.PARKING_EXISTS_MESSAGE;
+import static com.endava.commands.constants.Constants.FAILED_TO_PARSE_COMMAND_MESSAGE;
+import static com.endava.commands.constants.Constants.INVALID_NUMBER_OF_ARGUMENTS;
+import static com.endava.commands.constants.Constants.PARKING_CREATED_MESSAGE;
+import static com.endava.commands.constants.Constants.PARKING_EXISTS_MESSAGE;
 
-import com.endava.commands.contracts.Command;
-import com.endava.core.contracts.VehiclesFactory;
-import com.endava.core.contracts.VehiclesRepository;
-import com.endava.models.parkings.contracts.Parking;
-import java.math.BigDecimal;
+import com.endava.commands.Command;
+import com.endava.core.VehiclesFactory;
+import com.endava.core.VehiclesRepository;
+import com.endava.models.parkings.Parking;
+
 import java.util.List;
 
 public class CreateBusParkingCommand implements Command {

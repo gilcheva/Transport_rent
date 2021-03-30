@@ -1,12 +1,12 @@
 package com.endava.commands.listing;
 
-import static com.endava.commands.Constants.INVALID_NUMBER_OF_ARGUMENTS;
-import static com.endava.commands.Constants.JOIN_DELIMITER;
-import static com.endava.commands.Constants.NO_VEHICLES_MESSAGE;
+import static com.endava.commands.constants.Constants.INVALID_NUMBER_OF_ARGUMENTS;
+import static com.endava.commands.constants.Constants.JOIN_DELIMITER;
+import static com.endava.commands.constants.Constants.NO_VEHICLES_MESSAGE;
 
-import com.endava.commands.contracts.Command;
-import com.endava.core.contracts.VehiclesRepository;
-import com.endava.models.vehicles.contracts.Vehicle;
+import com.endava.commands.Command;
+import com.endava.core.VehiclesRepository;
+import com.endava.models.vehicles.Vehicle;
 import java.util.List;
 
 public class ListVehiclesCommand implements Command {

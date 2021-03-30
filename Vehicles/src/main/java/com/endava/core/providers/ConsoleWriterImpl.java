@@ -1,6 +1,6 @@
 package com.endava.core.providers;
 
-import com.endava.core.contracts.Writer;
+import com.endava.core.Writer;
 
 public class ConsoleWriterImpl implements Writer {
 

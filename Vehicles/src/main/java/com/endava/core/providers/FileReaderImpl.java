@@ -1,7 +1,7 @@
 package com.endava.core.providers;
 
-import com.endava.core.contracts.FileReader;
-import com.endava.core.contracts.Reader;
+import com.endava.core.FileReader;
+import com.endava.core.Reader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

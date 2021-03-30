@@ -1,12 +1,12 @@
 package com.endava.core.factories;
 
-import static com.endava.commands.Constants.INVALID_COMMAND;
+import static com.endava.commands.constants.Constants.INVALID_COMMAND;
 
-import com.endava.commands.contracts.Command;
+import com.endava.commands.Command;
 import com.endava.commands.enums.CommandType;
-import com.endava.core.contracts.CommandFactory;
-import com.endava.core.contracts.VehiclesFactory;
-import com.endava.core.contracts.VehiclesRepository;
+import com.endava.core.CommandFactory;
+import com.endava.core.VehiclesFactory;
+import com.endava.core.VehiclesRepository;
 
 public class CommandFactoryImpl implements CommandFactory {
 

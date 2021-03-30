@@ -1,6 +1,6 @@
 package com.endava.core.providers;
 
-import com.endava.core.contracts.CommandParser;
+import com.endava.core.CommandParser;
 import java.util.ArrayList;
 import java.util.List;
 

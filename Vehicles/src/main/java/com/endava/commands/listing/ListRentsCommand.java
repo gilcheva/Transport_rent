@@ -1,10 +1,10 @@
 package com.endava.commands.listing;
 
-import static com.endava.commands.Constants.JOIN_DELIMITER;
+import static com.endava.commands.constants.Constants.JOIN_DELIMITER;
 
-import com.endava.commands.contracts.Command;
-import com.endava.core.contracts.VehiclesRepository;
-import com.endava.models.contracts.Rent;
+import com.endava.commands.Command;
+import com.endava.core.VehiclesRepository;
+import com.endava.models.courses.Rent;
 import java.util.ArrayList;
 import java.util.List;
 

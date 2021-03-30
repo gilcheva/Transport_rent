@@ -1,12 +1,12 @@
 package com.endava.commands.creation;
 
-import com.endava.commands.contracts.Command;
-import com.endava.core.contracts.VehiclesFactory;
-import com.endava.core.contracts.VehiclesRepository;
-import com.endava.models.vehicles.contracts.Vehicle;
+import com.endava.commands.Command;
+import com.endava.core.VehiclesFactory;
+import com.endava.core.VehiclesRepository;
+import com.endava.models.vehicles.Vehicle;
 import java.util.List;
 
-import static com.endava.commands.Constants.*;
+import static com.endava.commands.constants.Constants.*;
 
 public class CreateCarCommand implements Command {
   private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 3;

@@ -1,9 +1,10 @@
 package com.endava.models;
 
-import com.endava.models.contracts.Course;
-import com.endava.models.vehicles.CarImpl;
-import com.endava.models.vehicles.contracts.Vehicle;
-import org.junit.Before;
+import com.endava.models.courses.Course;
+import com.endava.models.courses.impl.CourseImpl;
+import com.endava.models.vehicles.impl.CarImpl;
+import com.endava.models.vehicles.Vehicle;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -13,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CourseImplTest {
     private Vehicle testVehicle;
 
-    @Before
+    @BeforeEach
     public void before() {
         testVehicle = new CarImpl("С7320В", 14, 2);
     }

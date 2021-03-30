@@ -1,30 +1,30 @@
 package com.endava.core.factories;
 
-import com.endava.core.contracts.VehiclesFactory;
-import com.endava.models.CourseImpl;
-import com.endava.models.RentImpl;
-import com.endava.models.contracts.Course;
-import com.endava.models.contracts.Rent;
-import com.endava.models.parkings.AirplaneParkingImpl;
-import com.endava.models.parkings.BusParkingImpl;
-import com.endava.models.parkings.CarParkingImpl;
-import com.endava.models.parkings.ParkingTicketImpl;
-import com.endava.models.parkings.TrainParkingImpl;
-import com.endava.models.parkings.contracts.AirplaneParking;
-import com.endava.models.parkings.contracts.BusParking;
-import com.endava.models.parkings.contracts.CarParking;
-import com.endava.models.parkings.contracts.Parking;
-import com.endava.models.parkings.contracts.ParkingTicket;
-import com.endava.models.parkings.contracts.TrainParking;
-import com.endava.models.vehicles.AirplaneImpl;
-import com.endava.models.vehicles.CarImpl;
-import com.endava.models.vehicles.ShipImpl;
-import com.endava.models.vehicles.TrainImpl;
-import com.endava.models.vehicles.contracts.Airplane;
-import com.endava.models.vehicles.contracts.Car;
-import com.endava.models.vehicles.contracts.Ship;
-import com.endava.models.vehicles.contracts.Train;
-import com.endava.models.vehicles.contracts.Vehicle;
+import com.endava.core.VehiclesFactory;
+import com.endava.models.courses.impl.CourseImpl;
+import com.endava.models.courses.impl.RentImpl;
+import com.endava.models.courses.Course;
+import com.endava.models.courses.Rent;
+import com.endava.models.parkings.impl.AirplaneParkingImpl;
+import com.endava.models.parkings.impl.BusParkingImpl;
+import com.endava.models.parkings.impl.CarParkingImpl;
+import com.endava.models.parkings.impl.ParkingTicketImpl;
+import com.endava.models.parkings.impl.TrainParkingImpl;
+import com.endava.models.parkings.AirplaneParking;
+import com.endava.models.parkings.BusParking;
+import com.endava.models.parkings.CarParking;
+import com.endava.models.parkings.Parking;
+import com.endava.models.parkings.ParkingTicket;
+import com.endava.models.parkings.TrainParking;
+import com.endava.models.vehicles.impl.AirplaneImpl;
+import com.endava.models.vehicles.impl.CarImpl;
+import com.endava.models.vehicles.impl.ShipImpl;
+import com.endava.models.vehicles.impl.TrainImpl;
+import com.endava.models.vehicles.Airplane;
+import com.endava.models.vehicles.Car;
+import com.endava.models.vehicles.Ship;
+import com.endava.models.vehicles.Train;
+import com.endava.models.vehicles.Vehicle;
 
 
 public class VehiclesFactoryImpl implements VehiclesFactory {

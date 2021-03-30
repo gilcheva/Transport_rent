@@ -1,9 +1,9 @@
 package com.endava.commands.enums;
 
 
-import static com.endava.commands.Constants.INVALID_COMMAND;
+import static com.endava.commands.constants.Constants.INVALID_COMMAND;
 
-import com.endava.commands.contracts.Command;
+import com.endava.commands.Command;
 import com.endava.commands.creation.CreateAirplaneCommand;
 import com.endava.commands.creation.CreateAirplaneParkingCommand;
 import com.endava.commands.creation.CreateBusParkingCommand;
@@ -24,8 +24,8 @@ import com.endava.commands.listing.ListRentsCommand;
 import com.endava.commands.listing.ListVehiclesCommand;
 import com.endava.commands.listing.SortVehiclesByLoadCapacityCommand;
 import com.endava.commands.listing.SortVehiclesByPriceCommand;
-import com.endava.core.contracts.VehiclesFactory;
-import com.endava.core.contracts.VehiclesRepository;
+import com.endava.core.VehiclesFactory;
+import com.endava.core.VehiclesRepository;
 
 public enum CommandType {
   CREATEAIRPLANE {
